@@ -1,0 +1,205 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+}
+body {
+  background-color: #222;
+}
+.clock {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background-color: white;
+  position: relative;
+  margin: 100px auto;
+  border: 20px solid burlywood;
+}
+.clock::before {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  background-color: #222;
+  transform: translate(-50%, -50%);
+  border: 15px solid burlywood;
+}
+span {
+  position: absolute;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 4px;
+}
+span:nth-child(1) {
+  left: 50%;
+  transform: translate(-50%);
+}
+
+span:nth-child(2) {
+  left: 100%;
+  top: 50%;
+  transform: translate(-100%, -50%);
+}
+span:nth-child(3) {
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -100%);
+}
+span:nth-child(4) {
+  left: 0%;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+span:nth-child(1)::after,
+span:nth-child(1)::before,
+span:nth-child(2)::after,
+span:nth-child(2)::before,
+span:nth-child(3)::after,
+span:nth-child(3)::before,
+span:nth-child(4)::after,
+span:nth-child(4)::before {
+  content: "";
+  width: 5px;
+  height: 20px;
+  background-color: #222;
+  position: absolute;
+  border-radius: 20px;
+}
+span:nth-child(1)::after {
+  left: 400%;
+  top: 150%;
+  transform: translate(-100%, -100%) rotate(35deg);
+}
+span:nth-child(1)::before {
+  left: 610%;
+  top: 350%;
+  transform: translate(-100%, -100%) rotate(60deg);
+}
+span:nth-child(2)::after {
+  right: 120%;
+  top: 350%;
+  transform: translate(-100%, -100%) rotate(120deg);
+}
+span:nth-child(2)::before {
+  right: 460%;
+  top: 550%;
+  transform: translate(-100%, -100%) rotate(150deg);
+}
+span:nth-child(3)::after {
+  right: 510%;
+  bottom: 10%;
+  transform: translate(-100%, -100%) rotate(35deg);
+}
+span:nth-child(3)::before {
+  right: 860%;
+  bottom: 230%;
+  transform: translate(-100%, -100%) rotate(60deg);
+}
+span:nth-child(4)::after {
+  left: 470%;
+  bottom: 400%;
+  transform: translate(-100%, -100%) rotate(-40deg);
+}
+span:nth-child(4)::before {
+  left: 170%;
+  bottom: 200%;
+  transform: translate(-100%, -100%) rotate(120deg);
+}
+.hours {
+  width: 10px;
+  height: 100px;
+  background-color: #222;
+  border-radius: 20px;
+  position: absolute;
+  transform-origin: bottom;
+  top: 50%;
+  left: 50%;
+  animation: hour 43200s linear infinite;
+}
+.hours::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 0 solid transparent;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid #222;
+  position: absolute;
+  top: 0;
+  transform: translate(-25%, -50%);
+}
+.minutes {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 130px;
+  border-radius: 20px;
+  transform: translate(-100%, -50%);
+  transform-origin: bottom;
+  background-color: #222;
+  animation: min 3600s infinite linear;
+}
+.minutes::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 0 solid transparent;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 20px solid #222;
+  position: absolute;
+  top: 0;
+  transform: translate(-25%, -50%);
+}
+.seconds {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+
+  width: 4px;
+  height: 130px;
+  border-radius: 20px;
+  transform-origin: bottom;
+  background-color: red;
+  animation: sec 60s infinite steps(60, end);
+  z-index: 4;
+}
+.seconds::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 0 solid transparent;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 30px solid red;
+  position: absolute;
+  top: 0;
+  transform: translate(-25%, -50%);
+}
+@keyframes sec {
+  0% {
+    transform: translate(-50%, -100%);
+  }
+  100% {
+    transform: translate(-50%, -100%) rotate(1turn);
+  }
+}
+@keyframes min {
+  0% {
+    transform: translate(-50%, -100%);
+  }
+  100% {
+    transform: translate(-50%, -100%) rotate(1turn);
+  }
+}
+@keyframes hour {
+  0% {
+    transform: translate(-50%, -100%);
+  }
+  100% {
+    transform: translate(-50%, -100%) rotate(1turn);
+  }
+}
